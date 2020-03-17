@@ -1,0 +1,25 @@
+.sidebar-dark-primary
+{
+    background-color: rgb(2, 76, 69);
+}
+
+.brand-link
+{
+    padding: 0.8125rem 0.5rem 0.8125rem 0.1rem;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active
+{
+    background-color: #fff;
+    color: #024c45;
+}
+
+.content-wrapper
+{
+    background-color: #fff;
+}
+
+.navbar-light
+{
+    background-color: #f4f6f9;
+}
