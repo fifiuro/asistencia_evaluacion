@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hola', function () {
-    return view('prueba');
-});
+Route::get('departamento/buscar', 'departamentoController@index');
