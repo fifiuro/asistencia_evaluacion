@@ -16,7 +16,9 @@ class CreateCargosTable extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->bigIncrements('id_car');
             // LLAVE FORANEA A LA TABLA AREAS
-            $table->integer('id_are');
+            $table->unsignedBigInteger('id_are');
+            $table->foreign('id_are')->references('id_are')->on('areas');
+
             $table->string('cargo');
             $table->integer('nivel');
             $table->integer('salario');

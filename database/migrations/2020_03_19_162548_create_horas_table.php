@@ -16,8 +16,10 @@ class CreateHorasTable extends Migration
         Schema::create('horas', function (Blueprint $table) {
             $table->bigIncrements('id_hrs');
             // LLAVE FORANEA A LA TABLA AREAS
-            $table->integer('id_are');
-            $table->sting('nivel');
+            $table->unsignedBigInteger('id_are');
+            $table->foreign('id_are')->references('id_are')->on('areas');
+
+            $table->string('nivel');
             $table->integer('horas');
             $table->string('tiempo');
             $table->boolean('estado');
