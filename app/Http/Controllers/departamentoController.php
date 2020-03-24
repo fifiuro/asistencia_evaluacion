@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\configuracionDepartamento;
+use App\configuracion\Departamento;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidarDepartamentoRequest;
 
 class departamentoController extends Controller
 {
@@ -14,7 +15,7 @@ class departamentoController extends Controller
      */
     public function index()
     {
-        return view('departamento/buscar');
+        return view('departamento.buscar');
     }
 
     /**
@@ -23,11 +24,12 @@ class departamentoController extends Controller
      * @param  \App\configuracionDepartamento  $configuracionDepartamento
      * @return \Illuminate\Http\Response
      */
-    public function show(configuracionDepartamento $configuracionDepartamento)
+    public function show(Request $request)
     {
-        $departamento = new Departamento;
-
-        
+        $find = Departamento::where('departamento', 'like', '%'.$request->departamento.'%')->get();
+        return view('departamento.buscar')->with('find', $find)
+                                            ->with('estado', '1')
+                                            ->with('mensaje', '');
     }
 
     /**
@@ -37,7 +39,7 @@ class departamentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('departamento.nuevo');
     }
 
     /**
@@ -46,9 +48,16 @@ class departamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarDepartamentoRequest $request)
     {
-        //
+        $departamento = new Departamento;
+
+        $departamento->departamento = $request->departamento;
+        $departamento->sigla = $request->sigla;
+
+        $departamento->save();
+
+        return view('departamento.buscar');
     }
 
     /**
@@ -57,9 +66,17 @@ class departamentoController extends Controller
      * @param  \App\configuracionDepartamento  $configuracionDepartamento
      * @return \Illuminate\Http\Response
      */
-    public function edit(configuracionDepartamento $configuracionDepartamento)
+    public function edit($id)
     {
-        //
+        $find = Departamento::find($id);
+
+        if(!is_null($find)){
+            return view('departamento.editar')->with('find', $find)
+                                              ->with('mensaje', '');
+        }else{
+            return view('departamento.editar')->with('find', '')
+                                              ->with('mensaje', 'No se encontro el registro a modificar.');
+        }
     }
 
     /**
@@ -71,7 +88,15 @@ class departamentoController extends Controller
      */
     public function update(Request $request, configuracionDepartamento $configuracionDepartamento)
     {
-        //
+        $find = Departamento::find($request->id_dep);
+
+        $find->departamento = $request->departmaneto;
+        $find->sigla = $request->sigla;
+        $find->estado = $request->estado;
+
+        $find->save();
+
+        return view('departamento.buscar');
     }
 
     /**

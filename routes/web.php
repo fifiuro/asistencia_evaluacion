@@ -17,4 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Rutas DEPARTAMENTO
 Route::get('departamento/buscar', 'departamentoController@index');
+Route::post('departamento/buscar', 'departamentoController@show');
+Route::get('departamento/nuevo', 'departamentoController@create');
+Route::post('departamento/nuevo', 'departamentoController@store');
+Route::get('departamento/editar/{id}', 'departamentoController@edit');
+Route::post('departamento/actualizar', 'departamentoController@update');
