@@ -54,6 +54,7 @@ class departamentoController extends Controller
 
         $departamento->departamento = $request->departamento;
         $departamento->sigla = $request->sigla;
+        $departamento->estado = $request->estado;
 
         $departamento->save();
 
@@ -86,11 +87,11 @@ class departamentoController extends Controller
      * @param  \App\configuracionDepartamento  $configuracionDepartamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, configuracionDepartamento $configuracionDepartamento)
+    public function update(ValidarDepartamentoRequest $request)
     {
         $find = Departamento::find($request->id_dep);
 
-        $find->departamento = $request->departmaneto;
+        $find->departamento = $request->departamento;
         $find->sigla = $request->sigla;
         $find->estado = $request->estado;
 
@@ -105,8 +106,25 @@ class departamentoController extends Controller
      * @param  \App\configuracionDepartamento  $configuracionDepartamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(configuracionDepartamento $configuracionDepartamento)
+    public function confirm($id)
     {
-        //
+        $departamento = Departamento::find($id);
+
+        return view('departamento.confirma')->with('id', $departamento->id_dep);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\configuracionDepartamento  $configuracionDepartamento
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+        $departamento = Departamento::find($request->id);
+
+        $departamento->delete();
+
+        return view('departamento.buscar');
     }
 }

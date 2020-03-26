@@ -28,6 +28,18 @@
                             </small>
                         @endif
                     </div>
+                    <div class="form-group">
+                    <label for="estado">Estado *</label>
+                        <select name="estado" id="estado" class="form-control">
+                            <option value="1">Activo</option>
+                            <option value="0">Desactivado</option>
+                        </select>
+                        @if ($errors->has('estado'))
+                            <small class="form-text text-danger">
+                                {{ $errors->first('estado') }}
+                            </small>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">GUARDAR</button>

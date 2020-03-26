@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ValidarDepartamentoRequest extends FormRequest
 {
@@ -25,7 +26,11 @@ class ValidarDepartamentoRequest extends FormRequest
     {
         return [
             'departamento' => 'required|min:1|max:15|alpha',
-            'sigla' => 'required|min:1|max:4|alpha'
+            'sigla' => 'required|min:1|max:4|alpha', 
+            'estado' => [
+                        'required',
+                        Rule::in(['1', '0']),
+            ]
         ];
     }
 
@@ -40,7 +45,9 @@ class ValidarDepartamentoRequest extends FormRequest
             'sigla.required' => 'La :attribute es obligatorio.',
             'sigla.min' => 'La :attribute debe contener más de una letra.',
             'sigla.max' => 'La :attribute debe contener maximo 4 letras.',
-            'sigla.alpha' => 'La :attribute solo debe contener letras.'
+            'sigla.alpha' => 'La :attribute solo debe contener letras.',
+
+            'estado.required' => 'El :attribute es obligatorio'
         ];
     }
 
@@ -48,7 +55,8 @@ class ValidarDepartamentoRequest extends FormRequest
     {
         return [
             'departamento' => 'Nombre de Departamento',
-            'sigla' => 'Sigla del Departamento'
+            'sigla' => 'Sigla del Departamento',
+            'estado'=> 'Estado del Departamento'
         ];
     }
 }

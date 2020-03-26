@@ -66,11 +66,11 @@
                                     </td>
                                     <td>
                                         {{-- Boton de Modificar --}}
-                                        <a href="{{ url('departamento/editar/'.$f->id_dep) }}" class="btn btn-warning" alt="Modificar">
+                                        <a href="{{ url('departamento/editar/'.$f->id_dep) }}" class="btn btn-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         {{-- Boton de Eliminar --}}
-                                        <a href="{{ url('departamento/eliminar'.$f->id_dep) }}" class="btn btn-danger" alt="Eliminar">
+                                        <a href="{{ url('departamento/confirma/'.$f->id_dep) }}" class="btn btn-danger">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -87,7 +87,6 @@
                     <div class="card-header">
                         <h3 class="card-title">Resultado de la busqueda</h3>
                     </div>
-                    
                     <div class="card-body p-0">
                         <h3>{{ $mensaje }}</h3>
                     </div>
@@ -95,4 +94,8 @@
             </div>
         @endif
     @endisset
+@stop
+
+@section('extra')
+    
 @stop

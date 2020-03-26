@@ -5,12 +5,13 @@
         <div class="col-md-3"></div>
         <div class="card card-info col-md-6">
             <div class="card-header">
-                <h3 class="card-title">MODIFICAR DEPARTAMENTO</h3>
+                <h3 class="card-title">EDITAR DEPARTAMENTO</h3>
             </div>
             @if ($mensaje == '')
-                <form role="form" method="POST" action="{{ url('departamento/acrçtualizar') }}">
+                <form role="form" method="POST" action="{{ url('departamento/actualizar') }}">
                     @csrf
                     <div class="card-body">
+                        <input type="hidden" name="id_dep" id="id_dep" value="{{ $find->id_dep }}">
                         <div class="form-group">
                             <label for="departamento">Departamento *</label>
                             <input type="text" name="departamento" class="form-control" id="departamento" placeholder="Escriba el Departamento" value="{{ $find->departamento }}" maxlength="15" required>
@@ -31,8 +32,16 @@
                         </div>
                         <div class="form-group">
                             <label for="sigla">Estado *</label>
-                            <input type="text" name="estado" class="form-control" id="estado" placeholder="Esrciba la Sigla" value="{{ $find->estado }}" maxlength="4" required>
-                            @if ($errors->has('sigla'))
+                            <select name="estado" id="estado" class="form-control" required>
+                                @if ($find->estado == 1)
+                                    <option value="1" selected>ACTIVADO</option>
+                                    <option value="0">DESACTIVADO</option>
+                                @else
+                                    <option value="1">ACTIVADO</option>
+                                    <option value="0" selected>DESACTIVADO</option>
+                                @endif
+                            </select>
+                            @if ($errors->has('estado'))
                                 <small class="form-text text-danger">
                                     {{ $errors->first('estado') }}
                                 </small>
@@ -40,7 +49,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">MODIFICAR</button>
+                        <button type="submit" class="btn btn-primary">EDITAR</button>
                         <a href="{{ url('departamento/buscar') }}" class="btn btn-danger">CANCELAR</a>
                     </div>
                 </form>

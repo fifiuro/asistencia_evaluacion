@@ -24,3 +24,5 @@ Route::get('departamento/nuevo', 'departamentoController@create');
 Route::post('departamento/nuevo', 'departamentoController@store');
 Route::get('departamento/editar/{id}', 'departamentoController@edit');
 Route::post('departamento/actualizar', 'departamentoController@update');
+Route::get('departamento/confirma/{id}', 'departamentoController@confirm');
+Route::post('departamento/eliminar', 'departamentoController@destroy');
