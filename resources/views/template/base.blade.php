@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="{{ asset('css/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  {{--  Libreria que nos permite realizar Notiticaciones  --}}
+  <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+  {{--  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">  --}}
   <!-- CSC propio de la pagina -->
   <link rel="stylesheet" href="{{ asset('css/page.css') }}">
 </head>
@@ -68,7 +71,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ url('estadocivil/buscar') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Estado Civil
@@ -76,7 +79,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ url('afp/buscar') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 afp
@@ -84,7 +87,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ url('centrosalud/buscar') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Centro Salud
@@ -239,6 +242,11 @@
 <script src="{{ asset('js/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
+{{--  Libreria que nos permite realizar Notiticaciones  --}}
+<script src="{{ asset('js/toastr.js') }}"></script>
+{{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>  --}}
+
+@toastr_render
 <script>
   $(document).ready(function(){
     @yield('extra')

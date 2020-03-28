@@ -58,6 +58,8 @@ class departamentoController extends Controller
 
         $departamento->save();
 
+        \toastr()->success('Se agrego correctamente el registro.');
+
         return view('departamento.buscar');
     }
 
@@ -97,6 +99,8 @@ class departamentoController extends Controller
 
         $find->save();
 
+        \toastr()->success('Se modificó correctamente el registro.');
+
         return view('departamento.buscar');
     }
 
@@ -124,6 +128,8 @@ class departamentoController extends Controller
         $departamento = Departamento::find($request->id);
 
         $departamento->delete();
+
+        \toastr()->error('Se Eliminó correctamente el registro.');
 
         return view('departamento.buscar');
     }

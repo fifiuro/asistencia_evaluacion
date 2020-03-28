@@ -5,16 +5,16 @@
     <div class="row">
         <div class="card card-info col-md-12">
             <div class="card-header">
-                <h3 class="card-title">BUSCAR DEPARTAMENTO</h3>
+                <h3 class="card-title">BUSCAR AFP</h3>
             </div>
-            <form role="form" method="POST" action="{{ url('departamento/buscar') }}">
+            <form role="form" method="POST" action="{{ url('afp/buscar') }}">
                 @csrf
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-11">
                             <div class="form-group">
-                                <label for="departamento">Departamento</label>
-                                <input type="text" name="departamento" class="form-control" id="departamento" placeholder="Escriba el Departamento">
+                                <label for="afp">AFP</label>
+                                <input type="text" name="afp" class="form-control" id="afp" placeholder="Escriba el AFP">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -23,7 +23,7 @@
                                     <i class="fas fa-search"></i>
                                 </button>
                                 {{-- Boton de Nuveo --}}
-                                <a href="{{ url('departamento/nuevo') }}" class="btn btn-danger">
+                                <a href="{{ url('afp/nuevo') }}" class="btn btn-danger">
                                     <i class="fas fa-plus"></i>
                                 </a>
                             </div>
@@ -46,8 +46,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Departamento</th>
-                                    <th>Sigla</th>
+                                    <th>AFP</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -56,8 +55,7 @@
                                 @foreach ($find as $f)
                                 <tr>
                                     <td>{{ $f->id_dep }}</td>
-                                    <td>{{ $f->departamento }}</td>
-                                    <td>{{ $f->sigla}}</td>
+                                    <td>{{ $f->nombre }}</td>
                                     <td>
                                         @if ($f->estado == 1)
                                             <i class="fas fa-check" style="color:green"></i>
@@ -67,11 +65,11 @@
                                     </td>
                                     <td>
                                         {{-- Boton de Modificar --}}
-                                        <a href="{{ url('departamento/editar/'.$f->id_dep) }}" class="btn btn-warning" id="btn1">
+                                        <a href="{{ url('afp/editar/'.$f->id_afp) }}" class="btn btn-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         {{-- Boton de Eliminar --}}
-                                        <a href="{{ url('departamento/confirma/'.$f->id_dep) }}" class="btn btn-danger">
+                                        <a href="{{ url('afp/confirma/'.$f->id_afp) }}" class="btn btn-danger">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
