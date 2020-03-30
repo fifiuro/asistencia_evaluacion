@@ -95,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ url('contrato/buscar') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Contratos
@@ -103,7 +103,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ url('documento/buscar') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Documentos
